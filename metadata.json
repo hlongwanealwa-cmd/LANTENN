@@ -1,0 +1,6 @@
+{
+  "name": "Lantenn",
+  "description": "Premium landing page for Lantenn, a modern software development and consultancy firm empowering clients with cutting-edge custom solutions.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
