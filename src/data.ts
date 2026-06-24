@@ -4,12 +4,12 @@ export const SERVICES: Service[] = [
   {
     id: 'rent-collection',
     title: 'Automated Rent Collection',
-    description: 'Ditch the bank statement reconciliations and manual follow-ups. Rent is processed through secure channels and instantly reconciled inside your dashboard.',
+    description: 'Ditch the bank statement reconciliations and manual follow-ups. Tenants pay directly into your account using PayShap for instant, secure settlement.',
     details: [
-      'Simple, hassle-free 3% transaction fee per rent payment',
+      'PayShap processes payments directly to your bank account — zero delay',
+      'We request our flat 3% transaction fee afterward from you',
       'Zero monthly subscriptions — pay only when rent is collected',
-      'Automatic invoice creation and instant tenant payment receipts',
-      'One-click digital settlement straight to your South African bank account'
+      'Automatic invoice creation and instant tenant payment receipts'
     ],
     icon: 'Zap',
     tag: '3% Per Collection'
@@ -107,12 +107,12 @@ export const FAQS: FAQItem[] = [
   {
     category: 'Pricing',
     question: 'How does the 3% rent payment transaction fee work?',
-    answer: 'It is simple: we do not charge any monthly subscriptions or setup fees. When your tenant pays their rent through the platform, we deduct a 3% transaction fee and immediately transfer the rest to your bank account. If a unit is vacant or you do not collect rent that month, you pay absolutely R0.'
+    answer: 'It is simple: we do not charge any monthly subscriptions or setup fees. When tenants pay rent via PayShap on the portal, payments go 100% directly into your landlord bank account. We then request or invoice our flat 3% transaction fee from you. If a unit is vacant or you do not collect rent that month, you pay absolutely R0.'
   },
   {
     category: 'Process',
     question: 'How do my tenants pay their rent?',
-    answer: 'Tenants receive a safe, custom digital invoice link via SMS or WhatsApp every month. They can pay instantly and securely using South African local methods, including EFT (Electronic Funds Transfer), credit/debit cards, or instant payment channels.'
+    answer: 'Tenants receive a safe, custom digital invoice link via SMS or WhatsApp every month. They can pay instantly and securely using PayShap for immediate settlement directly into your bank account, as well as standard EFT or credit/debit card options.'
   },
   {
     category: 'Ownership',

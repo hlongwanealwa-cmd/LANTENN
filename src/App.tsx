@@ -2,15 +2,17 @@ import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Services from './components/Services';
+import RoiCalculator from './components/RoiCalculator';
 import LeadForm from './components/LeadForm';
-import FaqSection from './components/FaqSection';
 import Footer from './components/Footer';
 
 export default function App() {
   const [plannerOpenTrigger, setPlannerOpenTrigger] = useState(false);
 
   const handleNavigate = (sectionId: string) => {
-    const targetElement = document.getElementById(sectionId);
+    // If we're navigating to faq, scroll to the faq container inside the LeadForm
+    const targetId = sectionId === 'faq' ? 'faq-accordion' : sectionId;
+    const targetElement = document.getElementById(targetId);
     if (targetElement) {
       targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
@@ -26,7 +28,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FBF7F4] text-slate-950 font-sans selection:bg-[#f59a1e]/30 selection:text-[#19244e] antialiased">
+    <div className="min-h-screen bg-[#FBF7F4] text-slate-950 font-sans selection:bg-[#f59a1e]/30 selection:text-[#253c96] antialiased">
       {/* Navigation */}
       <Navbar 
         onNavigate={handleNavigate} 
@@ -42,11 +44,11 @@ export default function App() {
       {/* Core Services Section: What We Do */}
       <Services />
 
-      {/* Multi-step Project Lead Capture Planner */}
-      <LeadForm isAutoOpen={plannerOpenTrigger} />
+      {/* Interactive PayShap Rent Calculator */}
+      <RoiCalculator />
 
-      {/* FAQ Accordion Section */}
-      <FaqSection />
+      {/* Multi-step Project Lead Capture Planner with embedded FAQ */}
+      <LeadForm isAutoOpen={plannerOpenTrigger} />
 
       {/* Footnote Footer */}
       <Footer onNavigate={handleNavigate} />

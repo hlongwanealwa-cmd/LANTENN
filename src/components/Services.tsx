@@ -63,7 +63,7 @@ export default function Services() {
           transition={{ duration: 0.55 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <span className="font-mono text-xs font-bold tracking-widest text-[#19244e] uppercase bg-[#19244e]/5 px-4 py-1.5 rounded-full">
+          <span className="font-mono text-xs font-bold tracking-widest text-[#253c96] uppercase bg-[#253c96]/5 px-4 py-1.5 rounded-full">
             Core Features
           </span>
           <h2 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl text-[#1A1A1A] tracking-tight mt-4 mb-6 leading-tight">
@@ -96,8 +96,8 @@ export default function Services() {
                 <div>
                   {/* Badge & Icon Header */}
                   <div className="flex items-center justify-between mb-6">
-                    <div className="w-12 h-12 rounded-2xl bg-[#19244e] text-white flex items-center justify-center shadow-md">
-                      <IconComponent className="w-5 h-5 text-[#f59a1e]" />
+                    <div className="w-12 h-12 rounded-2xl bg-[#253c96] text-white flex items-center justify-center shadow-md">
+                      <IconComponent className="w-5 h-5 text-[#f36b2e]" />
                     </div>
                     <span className="text-[10px] font-mono font-extrabold uppercase tracking-wider text-slate-500 bg-slate-100 px-3 py-1 rounded-full">
                       {service.tag}
@@ -105,7 +105,7 @@ export default function Services() {
                   </div>
 
                   {/* Service Title */}
-                  <h3 className="font-display font-extrabold text-2xl text-[#1A1A1A] mb-4 group-hover:text-[#f59a1e] transition-colors">
+                  <h3 className="font-display font-extrabold text-2xl text-[#1A1A1A] mb-4 group-hover:text-[#f36b2e] transition-colors">
                     {service.title}
                   </h3>
 
@@ -119,7 +119,7 @@ export default function Services() {
                     >
                       Overview
                       {activeTab === 'overview' && (
-                        <div className="absolute bottom-0 left-0 right-4 h-0.5 bg-[#f59a1e]" />
+                        <div className="absolute bottom-0 left-0 right-4 h-0.5 bg-[#f36b2e]" />
                       )}
                     </button>
                     <button
@@ -130,7 +130,7 @@ export default function Services() {
                     >
                       Key Details ({service.details.length})
                       {activeTab === 'deliverables' && (
-                        <div className="absolute bottom-0 left-4 right-4 h-0.5 bg-[#f59a1e]" />
+                        <div className="absolute bottom-0 left-4 right-4 h-0.5 bg-[#f36b2e]" />
                       )}
                     </button>
                   </div>
@@ -145,7 +145,7 @@ export default function Services() {
                       <ul className="space-y-2.5">
                         {service.details.map((detail, index) => (
                           <li key={index} className="flex items-start gap-2.5 text-sm text-slate-700">
-                            <span className="w-5 h-5 rounded-full bg-[#19244e]/10 text-[#19244e] flex items-center justify-center shrink-0 mt-0.5">
+                            <span className="w-5 h-5 rounded-full bg-[#253c96]/10 text-[#253c96] flex items-center justify-center shrink-0 mt-0.5">
                               <Check className="w-3.5 h-3.5 stroke-[2.5]" />
                             </span>
                             <span className="font-medium">{detail}</span>
@@ -161,7 +161,7 @@ export default function Services() {
                   <span className="text-xs font-mono text-slate-400">Secure POPIA Compliant System</span>
                   <button
                     onClick={() => setSelectedService(service)}
-                    className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-slate-950 hover:text-[#f59a1e] transition-colors cursor-pointer group/btn"
+                    className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-slate-950 hover:text-[#f36b2e] transition-colors cursor-pointer group/btn"
                   >
                     View Specs
                     <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover/btn:translate-x-1" />
@@ -182,8 +182,8 @@ export default function Services() {
             >
               <div className="flex items-center justify-between mb-6">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-[#19244e] text-white flex items-center justify-center rounded-xl">
-                    {React.createElement(IconMap[selectedService.icon] || Zap, { className: 'w-5 h-5 text-[#f59a1e]' })}
+                  <div className="w-10 h-10 bg-[#253c96] text-white flex items-center justify-center rounded-xl">
+                    {React.createElement(IconMap[selectedService.icon] || Zap, { className: 'w-5 h-5 text-[#f36b2e]' })}
                   </div>
                   <h4 className="font-display font-bold text-xl text-[#1A1A1A]">
                     {selectedService.title} Features
@@ -215,7 +215,7 @@ export default function Services() {
                   <ul className="space-y-1.5">
                     {selectedService.details.map((item, idx) => (
                       <li key={idx} className="flex items-center gap-2 text-xs text-slate-700">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#f59a1e]" />
+                        <span className="w-1.5 h-1.5 rounded-full bg-[#f36b2e]" />
                         {item}
                       </li>
                     ))}
@@ -226,7 +226,7 @@ export default function Services() {
               <div className="mt-8 flex justify-end">
                 <button
                   onClick={() => setSelectedService(null)}
-                  className="bg-[#19244e] hover:bg-[#19244e]/90 text-white font-semibold py-2.5 px-6 rounded-full text-xs transition-colors cursor-pointer"
+                  className="bg-[#253c96] hover:bg-[#253c96]/90 text-white font-semibold py-2.5 px-6 rounded-full text-xs transition-colors cursor-pointer"
                 >
                   I Understand
                 </button>

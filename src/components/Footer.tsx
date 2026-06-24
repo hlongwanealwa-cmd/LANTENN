@@ -77,7 +77,7 @@ export default function Footer({ onNavigate }: FooterProps) {
               </li>
               <li>
                 <button onClick={() => onNavigate('planner-section')} className="hover:text-white transition-colors cursor-pointer">
-                  Claim Account Form
+                  Portfolio Onboarding Form
                 </button>
               </li>
             </ul>
@@ -93,7 +93,7 @@ export default function Footer({ onNavigate }: FooterProps) {
                 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
                 <span>Zero Subscription Fee (Flat 3%)</span>
               </p>
-              <p>Email: <a href="mailto:hello@lantenn.co.za" className="text-white font-bold hover:underline">hello@lantenn.co.za</a></p>
+              <p>Email: <a href="mailto:info@lantenn.co.za" className="text-white font-bold hover:underline">info@lantenn.co.za</a></p>
               <p>Hours: Mon - Fri, 8am - 5pm SAST</p>
             </div>
           </div>

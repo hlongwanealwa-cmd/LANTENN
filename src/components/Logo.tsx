@@ -88,7 +88,7 @@ export default function Logo({ className = "h-10", variant = 'light' }: LogoProp
             height="11"
             rx="5.5"
             transform="skewX(-15) rotate(-3)"
-            fill={isDark ? "#253c96" : "#19244e"}
+            fill={isDark ? "#c4e7e5" : "#253c96"}
           />
           {/* Bottom cyan/ocean water bar */}
           <rect

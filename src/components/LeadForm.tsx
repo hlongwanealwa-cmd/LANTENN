@@ -1,10 +1,46 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Inquiry } from '../types';
-import { Check, Mail, User, Send, FileText, Trash2, Home, Phone, HelpCircle } from 'lucide-react';
+import { Check, Mail, User, Send, FileText, Trash2, Home, Phone, HelpCircle, MessageCircle, ChevronDown, ArrowRight, Zap, Smartphone, Landmark, ShieldCheck } from 'lucide-react';
+import { FAQS } from '../data';
 
 interface LeadFormProps {
   isAutoOpen?: boolean;
+}
+
+function FaqCard({ faq }: { faq: any }) {
+  const [isOpen, setIsOpen] = useState(false);
+  return (
+    <div className="border border-slate-200 rounded-2xl overflow-hidden bg-white hover:bg-slate-50/50 transition-colors duration-200">
+      <button
+        type="button"
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full text-left py-4 px-5 flex items-center justify-between gap-3 cursor-pointer focus:outline-none"
+      >
+        <div className="flex items-center gap-3">
+          <HelpCircle className="w-4.5 h-4.5 text-slate-400 shrink-0" />
+          <span className="font-display font-bold text-slate-900 text-sm leading-snug">
+            {faq.question}
+          </span>
+        </div>
+        <ChevronDown className={`w-4 h-4 text-slate-400 shrink-0 transition-transform duration-200 ${isOpen ? 'rotate-180 text-slate-800' : ''}`} />
+      </button>
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            <div className="px-5 pb-4 border-t border-slate-100 pt-3 text-slate-600 text-xs sm:text-sm leading-relaxed font-sans bg-slate-50/30">
+              {faq.answer}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
 }
 
 export default function LeadForm({ isAutoOpen = false }: LeadFormProps) {
@@ -139,14 +175,14 @@ export default function LeadForm({ isAutoOpen = false }: LeadFormProps) {
         
         {/* Header Block with Motion */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="font-mono text-xs font-bold tracking-widest text-[#19244e] uppercase bg-[#19244e]/5 px-4 py-1.5 rounded-full">
+          <span className="font-mono text-xs font-bold tracking-widest text-[#253c96] uppercase bg-[#253c96]/5 px-4 py-1.5 rounded-full">
             Landlord Portal Setup
           </span>
           <h2 className="font-display font-extrabold text-3xl sm:text-4xl md:text-5xl text-slate-900 tracking-tight mt-4 mb-6 leading-tight">
-            Claim your free landlord account
+            Onboard your property portfolio
           </h2>
           <p className="text-base sm:text-lg text-slate-600 leading-relaxed font-sans">
-            Submit your portfolio details below. Get started for absolutely R0 upfront — only pay the flat 3% transaction fee when rent is collected.
+            Submit your portfolio details below. Get started for absolutely R0 upfront — payments settle 100% directly into your account and we invoice you 3% afterward.
           </p>
         </div>
 
@@ -197,7 +233,7 @@ export default function LeadForm({ isAutoOpen = false }: LeadFormProps) {
                   exit={{ opacity: 0 }}
                   className="py-6 flex flex-col items-center text-center"
                 >
-                  <div className="w-16 h-16 rounded-full bg-[#19244e]/10 text-[#19244e] flex items-center justify-center mb-6 shadow-sm">
+                  <div className="w-16 h-16 rounded-full bg-[#253c96]/10 text-[#253c96] flex items-center justify-center mb-6 shadow-sm">
                     <Check className="w-8 h-8 stroke-[2.5]" />
                   </div>
                   <h3 className="font-display font-extrabold text-2xl text-slate-950 mb-3">
@@ -446,7 +482,7 @@ export default function LeadForm({ isAutoOpen = false }: LeadFormProps) {
                           whileHover={{ scale: 1.02 }}
                           whileTap={{ scale: 0.98 }}
                           type="submit"
-                          className="w-2/3 inline-flex items-center justify-center gap-2 bg-[#19244e] hover:bg-[#19244e]/90 text-white font-bold py-3.5 px-6 rounded-full text-sm transition-all shadow-md shadow-slate-900/15 cursor-pointer"
+                          className="w-2/3 inline-flex items-center justify-center gap-2 bg-[#253c96] hover:bg-[#253c96]/90 text-white font-bold py-3.5 px-6 rounded-full text-sm transition-all shadow-md shadow-slate-900/15 cursor-pointer"
                         >
                           Submit Setup Brief
                           <Send className="w-4 h-4" />
@@ -459,8 +495,8 @@ export default function LeadForm({ isAutoOpen = false }: LeadFormProps) {
             </AnimatePresence>
           </div>           {/* Right Submitted History column */}
           <div className="lg:col-span-5 flex flex-col gap-6">
-            <div className="bg-[#19244e] text-white p-6 sm:p-8 rounded-3xl shadow-lg">
-              <h3 className="font-display font-extrabold text-lg mb-4 text-[#f59a1e]">
+            <div className="bg-[#253c96] text-white p-6 sm:p-8 rounded-3xl shadow-lg">
+              <h3 className="font-display font-extrabold text-lg mb-4 text-[#f36b2e]">
                 Our Core Value Proposition
               </h3>
               <p className="text-xs text-slate-200 leading-relaxed font-sans mb-6">
@@ -479,67 +515,138 @@ export default function LeadForm({ isAutoOpen = false }: LeadFormProps) {
               </ul>
             </div>
 
-            {/* Live Submissions Tracker */}
-            <div className="bg-slate-50 border border-slate-200 p-6 rounded-3xl flex-1 flex flex-col justify-between">
+            {/* Live PayShap Direct Cash-Flow Tracker Widget */}
+            <div className="bg-slate-900 text-white p-6 sm:p-8 rounded-3xl flex-1 flex flex-col justify-between border border-slate-800 relative overflow-hidden group hover:border-[#253c96]/30 transition-all duration-300">
+              {/* Background accent glow */}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[#253c96]/15 rounded-full blur-2xl pointer-events-none" />
+              
               <div>
-                <div className="flex items-center justify-between border-b border-slate-200/60 pb-3 mb-4">
-                  <span className="font-mono text-xs font-bold text-slate-500 uppercase tracking-widest">
-                    Your Saved Portfolios ({myInquiries.length})
+                <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-5">
+                  <span className="font-mono text-[10px] font-bold text-slate-400 uppercase tracking-widest flex items-center gap-1.5">
+                    <Zap className="w-3.5 h-3.5 text-[#f36b2e] animate-pulse" /> South African Flow Integration
                   </span>
-                  <span className="text-[9px] font-semibold text-[#19244e] bg-[#c4e7e5]/40 border border-[#19244e]/10 px-2 py-0.5 rounded-full animate-pulse">
-                    LocalStorage
+                  <span className="text-[9px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-full uppercase">
+                    100% Direct
                   </span>
                 </div>
 
-                {myInquiries.length === 0 ? (
-                  <p className="text-xs text-slate-400 font-sans italic py-4 text-center">
-                    No registered properties found in this browser. Use the left form to add your first one!
-                  </p>
-                ) : (
-                  <div className="space-y-3 max-h-[220px] overflow-y-auto pr-1">
-                    {myInquiries.map((inq) => (
-                      <div key={inq.id} className="bg-white border border-slate-200 p-3 rounded-xl shadow-sm text-xs relative group flex flex-col justify-between gap-2">
-                        <div>
-                          <div className="flex items-center justify-between mb-1">
-                            <span className="font-bold text-slate-800 truncate pr-6">{inq.projectName}</span>
-                            <button
-                              onClick={() => handleDeleteInquiry(inq.id)}
-                              className="text-slate-300 hover:text-rose-500 transition-colors p-1 rounded hover:bg-slate-50 absolute right-2 top-2 animate-fade-in"
-                              title="Delete local log"
-                            >
-                              <Trash2 className="w-3.5 h-3.5" />
-                            </button>
-                          </div>
-                          <p className="text-[10px] text-slate-400 font-mono mb-2">{inq.submittedAt} • {inq.unitCount}</p>
-                          <p className="text-[11px] text-slate-600 line-clamp-2 pr-2">"{inq.description}"</p>
-                        </div>
-                        <div className="flex items-center justify-between border-t border-slate-100 pt-2 text-[9px] font-mono font-bold">
-                          <span className="text-slate-500">{inq.collectionMethod}</span>
-                          <span className="text-[#f59a1e] uppercase animate-pulse">● Processing Onboarding</span>
-                        </div>
+                <h4 className="font-display font-extrabold text-base text-slate-100 mb-2">
+                  Instant PayShap Settlement
+                </h4>
+                <p className="text-xs text-slate-400 leading-relaxed font-sans mb-6">
+                  Tenant payments bypass middleman holdings completely. Rent is paid via PayShap and lands instantly in your bank account.
+                </p>
+
+                {/* Animated interactive flow diagram */}
+                <div className="space-y-4 bg-slate-950/60 p-4 rounded-2xl border border-white/5">
+                  
+                  {/* Step 1: Tenant */}
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-[#253c96]/20 border border-[#253c96]/30 flex items-center justify-center shrink-0">
+                      <Smartphone className="w-4 h-4 text-slate-200" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex justify-between text-xs font-bold text-slate-200">
+                        <span>Tenant Portal Link</span>
+                        <span className="text-[10px] font-mono text-slate-500">Initiates Payment</span>
                       </div>
-                    ))}
+                      <p className="text-[10px] text-slate-400">Tenant taps WhatsApp/SMS, chooses PayShap or instant EFT.</p>
+                    </div>
                   </div>
-                )}
+
+                  {/* Flow Arrow */}
+                  <div className="flex justify-center my-1">
+                    <div className="h-6 w-px border-l-2 border-dashed border-emerald-500/40 animate-pulse" />
+                  </div>
+
+                  {/* Step 2: Landlord Bank */}
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center shrink-0">
+                      <Landmark className="w-4 h-4 text-emerald-400" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex justify-between text-xs font-bold text-emerald-400">
+                        <span>Your Bank Account</span>
+                        <span className="text-[10px] font-mono text-emerald-400 flex items-center gap-1">
+                          <span className="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-ping" /> Instant
+                        </span>
+                      </div>
+                      <p className="text-[10px] text-slate-400">Rent goes 100% directly into your verified bank account.</p>
+                    </div>
+                  </div>
+
+                  {/* Flow Arrow */}
+                  <div className="flex justify-center my-1">
+                    <div className="h-6 w-px border-l-2 border-dashed border-[#f36b2e]/40 animate-pulse" />
+                  </div>
+
+                  {/* Step 3: Lantenn Invoice */}
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-[#f36b2e]/15 border border-[#f36b2e]/30 flex items-center justify-center shrink-0">
+                      <ShieldCheck className="w-4 h-4 text-[#f36b2e]" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex justify-between text-xs font-bold text-slate-200">
+                        <span>Lantenn 3% Request</span>
+                        <span className="text-[10px] font-mono text-slate-500">Billed Afterward</span>
+                      </div>
+                      <p className="text-[10px] text-slate-400">We invoice you afterward for the flat 3% transaction fee.</p>
+                    </div>
+                  </div>
+
+                </div>
               </div>
 
-              {myInquiries.length > 0 && (
-                <div className="border-t border-slate-200/70 pt-4 mt-4">
-                  <p className="text-[10px] text-slate-400 font-sans">
-                    Your portfolio is currently queued for onboarding. Our support engineers will contact you at the email and phone provided to verify lease formats.
-                  </p>
-                </div>
-              )}
+              <div className="border-t border-white/5 pt-4 mt-5 flex items-center justify-between text-[10px] font-mono text-slate-400">
+                <span className="flex items-center gap-1">
+                  <Check className="w-3 h-3 text-emerald-400" /> Safe & POPIA Compliant
+                </span>
+                <span>Lantenn SA &bull; 2026</span>
+              </div>
             </div>
           </div>
 
         </div>
 
+        {/* Embedded Compact FAQ Accordion */}
+        <div id="faq-accordion" className="mt-20 pt-16 border-t border-slate-200/60 max-w-4xl mx-auto">
+          <div className="text-center mb-10">
+            <span className="font-mono text-xs font-bold tracking-widest text-[#253c96] uppercase bg-[#253c96]/5 px-4 py-1.5 rounded-full">
+              Got Questions?
+            </span>
+            <h3 className="font-display font-extrabold text-2xl sm:text-3xl text-slate-900 tracking-tight mt-3">
+              Frequently Asked Questions
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-500 font-sans mt-2 max-w-xl mx-auto">
+              Got specific questions about rent payments, secure tenant logs, or the 3% transaction fee model? We've laid out clear explanations here.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {FAQS.map((faq, index) => (
+              <FaqCard key={index} faq={faq} />
+            ))}
+          </div>
+
+          <div className="mt-8 text-center bg-[#253c96]/5 rounded-2xl p-5 border border-[#253c96]/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <span className="text-xs font-sans text-slate-600 font-medium text-left">
+              Still have an unanswered question about custom integrations or payment cycles?
+            </span>
+            <a
+              href="mailto:info@lantenn.co.za"
+              className="inline-flex items-center gap-1.5 text-xs font-mono font-bold text-[#253c96] hover:text-[#f36b2e] transition-colors shrink-0"
+            >
+              <MessageCircle className="w-4 h-4" />
+              info@lantenn.co.za
+            </a>
+          </div>
+        </div>
+
         {/* Dynamic decorative visual elements */}
         <div className="mt-16 flex flex-wrap items-center justify-center gap-x-8 gap-y-4 text-slate-400 text-xs font-mono font-bold">
-          <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 bg-[#19244e] rounded-full"></span> Secure Encrypted Database</span>
-          <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 bg-[#19244e] rounded-full"></span> POPIA Data Privacy compliant</span>
-          <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 bg-[#f59a1e] rounded-full"></span> Instant South African Bank Settlements</span>
+          <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 bg-[#253c96] rounded-full"></span> Secure Encrypted Database</span>
+          <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 bg-[#253c96] rounded-full"></span> POPIA Data Privacy compliant</span>
+          <span className="flex items-center gap-1.5"><span className="w-1.5 h-1.5 bg-[#f36b2e] rounded-full"></span> Instant South African Bank Settlements</span>
         </div>
 
       </div>

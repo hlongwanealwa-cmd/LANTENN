@@ -70,20 +70,12 @@ export default function Navbar({ onNavigate, onOpenPlanner }: NavbarProps) {
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-4">
             <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => handleLinkClick('planner-section')}
-              className="text-sm font-semibold text-[#19244e] hover:text-[#f59a1e] transition-colors cursor-pointer"
-            >
-              Get Started
-            </motion.button>
-            <motion.button
               whileHover={{ scale: 1.03, y: -1 }}
               whileTap={{ scale: 0.97 }}
-              onClick={onOpenPlanner}
-              className="inline-flex items-center gap-2 bg-[#19244e] hover:bg-[#19244e]/90 text-white text-sm font-semibold py-2.5 px-5 rounded-full transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer group"
+              onClick={() => handleLinkClick('planner-section')}
+              className="inline-flex items-center gap-2 bg-[#253c96] hover:bg-[#253c96]/90 text-white text-sm font-semibold py-2.5 px-6 rounded-full transition-all duration-200 shadow-sm hover:shadow-md cursor-pointer group"
             >
-              Claim Free Account
+              Get Started
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </motion.button>
           </div>
@@ -124,20 +116,13 @@ export default function Navbar({ onNavigate, onOpenPlanner }: NavbarProps) {
               <div className="pt-4 px-4 flex flex-col gap-3">
                 <motion.button
                   whileTap={{ scale: 0.98 }}
-                  onClick={() => handleLinkClick('planner-section')}
-                  className="w-full text-center py-3 border border-slate-200 text-slate-700 font-semibold rounded-full hover:bg-slate-50 transition-colors"
-                >
-                  Get Started
-                </motion.button>
-                <motion.button
-                  whileTap={{ scale: 0.98 }}
                   onClick={() => {
                     setMobileMenuOpen(false);
-                    onOpenPlanner();
+                    handleLinkClick('planner-section');
                   }}
-                  className="w-full text-center py-3 bg-[#19244e] text-white font-semibold rounded-full hover:bg-[#19244e]/90 transition-colors shadow-md"
+                  className="w-full text-center py-3 bg-[#253c96] text-white font-semibold rounded-full hover:bg-[#253c96]/90 transition-colors shadow-md"
                 >
-                  Claim Free Account
+                  Get Started
                 </motion.button>
               </div>
             </div>
